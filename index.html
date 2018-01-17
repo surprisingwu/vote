@@ -33,25 +33,15 @@
                 <!--数据列表-->
                 <ul class="mui-table-view mui-table-view-chevron vote-list-background">
                     <li class="vote-list-item" v-for="(item,index) in data" :key="index" @click="itemClick(item)">
-                        <div class="vote-about-creator">
-                            <img src="img/demo1.jpg" alt="" width="35" height="35" class="vote-avatar">
-                            <div class="vote-creator-msg">
-                                <h2 class="vote-creator-name">{{item.name}}</h2>
-                                <span class="vote-create-time">{{item.creatTime}}</span>
-                            </div>
-                            <i class="vote-type-common" :class="retType(item.state)"></i>
-                        </div>
-                        <div class="vote-content">
-                            <div class="vote-theme">{{item.title}}</div>
-                            <i class="mui-icon mui-icon-arrowright vote-arrow-right"></i>
+                        <list-item :item="item" :is-show-arrow="isShowArrow"></list-item>
                     </li>
                 </ul>
-                </div>
             </div>
-            <transition name="vote-slide">
-                <router-view></router-view>
-            </transition>
         </div>
+        <transition name="vote-slide">
+            <router-view></router-view>
+        </transition>
+    </div>
 </body>
 
 </html>

@@ -6,7 +6,13 @@ var vueRouter = new VueRouter({
     },
     {
       path: '/index/vote',
-      component: components.VoteDetail
+      component: components.VoteDetail,
+      children: [
+        {
+          path:'detail',
+          component: components.VoteitemDetail
+        }
+      ]
     }
   ]
 })

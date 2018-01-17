@@ -4,6 +4,7 @@
     router: vueRouter,
     store: vuexStore,
     data: {
+      isShowArrow: true,
       data: [
         {
           title: '用友金融2015年一季度优秀员工评选',
@@ -63,16 +64,13 @@
       }, 20)
     },
     methods: {
-      retType: function(type) {
-        if (type === 'voting') {
-          return 'vote-type-voting'
-        }
-        return 'vote-type-over'
-      },
       itemClick: function(item) {
         this.$store.commit(SET_LIST_ITEM,item)
         this.$router.push({path: 'index/vote'})
       }
+    },
+    components: {
+      ListItem: components.ListItem
     }
   })
 }
