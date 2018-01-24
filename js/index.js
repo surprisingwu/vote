@@ -5,6 +5,9 @@
     store: vuexStore,
     data: {
       isShowArrow: true,
+      options: {
+        click: true
+      },
       data: [
         {
           title: '用友金融2015年一季度优秀员工评选',
@@ -22,51 +25,18 @@
         }
       ]
     },
-    mounted: function() {
-      setTimeout(function() {
-        mui.init({
-          pullRefresh: {
-            container: '#refreshContainer',
-            down: {
-              height: '50px',
-              auto: false,
-              height: 60,
-              contentdown: '下拉可以刷新',
-              contentover: '释放立即刷新',
-              contentrefresh: '正在刷新...',
-              auto: false,
-              callback: function() {
-                console.log(1)
-                setTimeout(function() {
-                  mui('#refreshContainer')
-                    .pullRefresh()
-                    .endPulldownToRefresh()
-                  mui.toast('刷新成功')
-                }, 1000)
-              }
-            },
-            up: {
-              height: 50,
-              auto: false,
-              contentrefresh: '正在加载...',
-              contentnomore: '没有更多数据了',
-              callback: function() {
-                setTimeout(function() {
-                  // 没有更多数据的时候传true
-                  mui('#refreshContainer')
-                    .pullRefresh()
-                    .endPullupToRefresh(false)
-                }, 1000)
-              }
-            }
-          }
-        })
-      }, 20)
-    },
+    mounted: function() {},
     methods: {
       itemClick: function(item) {
+        if (!event._constructed) {
+          return
+        }
+        debugger
         this.$store.commit(SET_LIST_ITEM,item)
-        this.$router.push({path: 'index/vote'})
+        this.$router.push({path: '/index/vote'})
+      },
+      goToPublish: function() {
+        this.$router.push({path: '/index/publish'})
       }
     },
     components: {
