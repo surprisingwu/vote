@@ -301,21 +301,21 @@
       },
       num2Chinese: function(digit) {
         digit = typeof digit === 'number' ? String(digit) : digit;
-        const zh = [ '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+        const zh = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
         const unit = ['千', '百', '十', ''];
         const quot = ['万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
 
-        let breakLen = Math.ceil(digit.length / 4);
-        let notBreakSegment = digit.length % 4 || 4;
-        let segment;
-        let zeroFlag = [], allZeroFlag = [];
-        let result = '';
+        var breakLen = Math.ceil(digit.length / 4);
+        var notBreakSegment = digit.length % 4 || 4;
+        var segment;
+        var zeroFlag = [], allZeroFlag = [];
+        var result = '';
 
   while (breakLen > 0) {
     if (!result) { // 第一次执行
       segment = digit.slice(0, notBreakSegment);
-      let segmentLen = segment.length;
-      for (let i = 0; i < segmentLen; i++) {
+      var segmentLen = segment.length;
+      for (var i = 0; i < segmentLen; i++) {
         if (segment[i] != 0) {
           if (zeroFlag.length > 0) {
             result += '零' + zh[segment[i]] + unit[4 - segmentLen + i];
@@ -344,7 +344,7 @@
       segment = digit.slice(notBreakSegment, notBreakSegment + 4);
       notBreakSegment += 4;
 
-      for (let j = 0; j < segment.length; j++) {
+      for (var j = 0; j < segment.length; j++) {
         if (segment[j] != 0) {
           if (zeroFlag.length > 0) {
             // 第一次执行zeroFlag长度不为0，说明上一个分区最后有0待处理
@@ -516,6 +516,7 @@
         writeConfig(this.ip, this.port)
         summer.callAction(this._handleParams(options, success, error))
       },
+      // options{quality: Number,}
       openAlbum: function(options, success, error) {
         var defaultQuality = 0.85
         if (_.isFunction(options)) {

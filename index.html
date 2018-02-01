@@ -11,6 +11,7 @@
     <script src="js/summer.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/mui.js"></script>
+    <script src="js/vue/velocity.js"></script>
     <script src="js/spring.js"></script>
     <script src="js/vue/vue.js"></script>
     <script src="js/vue/vue-router.js"></script>
@@ -26,25 +27,27 @@
     <div id="app">
         <header class="mui-bar mui-bar-nav vote-header">
             <i class="mui-icon mui-icon-back vote-icon-back"></i>
-            <h2 class="mui-title vote-header-title">投票</h1>
-                <span class="vote-header-publish" @click="goToPublish">发布投票</span>
+            <h2 class="mui-title vote-header-title">投票</h2>
+            <span class="vote-header-publish" @click="goToPublish">发布投票</span>
         </header>
         <div class="vote-scroll-wrapper">
-            <cube-scroll :data="data" :options="options">
+            <cube-scroll :data="data" :options="options" @pulling-up="onPullingUp" ref="scroll">
                 <ul class="mui-table-view mui-table-view-chevron vote-list-background">
                     <li class="vote-list-item" v-for="(item,index) in data" :key="index" @click="itemClick(item)">
-                        <list-item :item="item" :is-show-arrow="isShowArrow"></list-item>
+                        <list-item :data="item" :is-show-arrow="isShowArrow"></list-item>
                     </li>
                 </ul>
             </cube-scroll>
         </div>
-    </div>
-    <transition name="vote-slide">
-        <keep-alive>
+        <div class="lib-nofile-container" v-show="isError" @click="openRequestAgain">
+            <net-err-img></net-err-img>
+        </div>
+        <transition name="vote-slide">
             <router-view></router-view>
-        </keep-alive>
-    </transition>
+        </transition>
     </div>
+    </div>
+
 </body>
 
 </html>

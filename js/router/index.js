@@ -1,16 +1,16 @@
 var vueRouter = new VueRouter({
   routes: [
     {
-      path: '/index/publish',
-      component: components.PublishVote
+      path: '/publish',
+      component: voteComponents.PublishVote
     },
     {
-      path: '/index/vote',
-      component: components.VoteDetail,
+      path: '/vote',
+      component: voteComponents.VoteDetail,
       children: [
         {
           path:'detail',
-          component: components.VoteitemDetail
+          component: voteComponents.VoteitemDetail
         }
       ]
     }

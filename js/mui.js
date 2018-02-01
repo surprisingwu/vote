@@ -7087,7 +7087,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 	$.swipeoutClose = function(el) {
 		if (!el) return;
 		var classList = el.classList;
-		if (!classList.contains(CLASS_SELECTED)) return;
+		// if (!classList.contains(CLASS_SELECTED)) return;
 		var direction = el.querySelector(SELECTOR_SLIDER_RIGHT + SELECTOR_SELECTED) ? 'right' : 'left';
 		var swipeoutAction = el.querySelector($.classSelector(".slider-" + direction));
 		if (!swipeoutAction) return;
